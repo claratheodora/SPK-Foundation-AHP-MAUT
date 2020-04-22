@@ -43,6 +43,7 @@ include('header.php');
 
 <section class="content">
 	<h2 class="ui header">Hasil Perhitungan</h2>
+	<div style="width:1000px;height:430px;overflow-x:scroll;">
 	<table class="ui celled table">
 		<thead>
 		<tr>
@@ -85,7 +86,7 @@ include('header.php');
 		</tfoot>
 
 	</table>
-
+	</div>
 
 	<h2 class="ui header">Perangkingan</h2>
 	<table class="ui celled collapsing table">
