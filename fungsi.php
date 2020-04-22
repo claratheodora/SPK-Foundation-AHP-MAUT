@@ -478,10 +478,12 @@ function showTabelPerbandingan($jenis,$kriteria) {
 		</tbody>
 	</table>
 	<input type="text" name="jenis" value="<?php echo $jenis; ?>" hidden>
-	<br><br><input class="ui primary button" type="submit" name="submit" value="SUBMIT">
-	<input class="ui button" type="reset" name="reset" value="RESET">
+	<br><br>
+	<input class="ui primary button" type="submit" name="submit" value="SUBMIT">
 	</form>
-
+	<form method="post" action="bobot_kriteria.php">
+		<input class="ui button" type="submit" name="reset" value="RESET">
+	</form>
 	<?php
 }
 

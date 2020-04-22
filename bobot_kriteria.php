@@ -3,6 +3,12 @@
 	include('fungsi.php');
 
 	include('header.php');
+
+	//menjalankan perintah delete
+	if(isset($_POST['reset'])) {
+		deleteNilaiPerbandinganKriteria();
+	}
+	
 ?>
 <section class="content">
 	<h2 class="ui header">Perbandingan Kriteria</h2>
