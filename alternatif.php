@@ -18,8 +18,6 @@
 	include('header.php');
 
 ?>
-
-
 <section class="content">
 
 	<h2 class="ui header">Alternatif</h2>
@@ -41,9 +39,22 @@
 		<tbody>
 
 		<?php
+			
+			if (isset($_GET['pageno'])) {
+				$pageno = $_GET['pageno'];
+			} else {
+				$pageno = 1;
+			}
+			$no_of_records_per_page = 10;
+			$offset = ($pageno-1) * $no_of_records_per_page;
+	
+			$total_pages_sql = "SELECT COUNT(*) FROM alternatif";
+			$result = mysqli_query($koneksi,$total_pages_sql);
+			$total_rows = mysqli_fetch_array($result)[0];
+			$total_pages = ceil($total_rows / $no_of_records_per_page);
+
 			// Menampilkan list alternatif
-			$query = "SELECT `id`,`nama`,`foto`,`Ketahanan`,`Pigmentasi`,`Value of money`,`Kemasan`,`Tekstur` 
-					FROM alternatif ORDER BY id";
+			$query = "SELECT * FROM alternatif LIMIT $offset, $no_of_records_per_page";
 			$result	= mysqli_query($koneksi, $query);
 
 			$i = 0;
@@ -63,14 +74,13 @@
 					<form method="post" action="alternatif.php">
 						<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
 						<button type="submit" name="edit" class="ui mini teal left labeled icon button"><i class="right edit icon"></i>EDIT</button>
-						
 					</form>
 				</td>
 			</tr>
 
 <?php } ?>
 	
-		</tbody>
+	</tbody>
 		<tfoot class="full-width">
 			<tr>
 				<th colspan="9">
@@ -84,8 +94,17 @@
 		</tfoot>
 	</table>
 
-	<br>
+	
+	<div class="ui pagination menu">
+		<a class="item" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+		<a class="<?php if($pageno == 1){echo 'active';}?> item" href="?pageno=1">1</a>
+		<a class="<?php if($pageno == 2){echo 'active';}?> item"href="?pageno=2">2</a>
+		<a class="<?php if($pageno == 3){echo 'active';}?> item" href="?pageno=3">3</a>
+		<a class="<?php if($pageno == 4){echo 'active';}?> item" href="?pageno=4">4</a>
+		<a class="item" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+    </div>
 
+	<br>
 
 	<form action="bobot_kriteria.php">
 	<button class="ui right labeled icon button" style="float: right;">
