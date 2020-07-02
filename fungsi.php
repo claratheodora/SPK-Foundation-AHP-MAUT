@@ -421,8 +421,9 @@ function showTabelPerbandingan($jenis,$kriteria) {
 	<table class="ui celled selectable collapsing table">
 		<thead>
 			<tr>
-				<th colspan="2">pilih yang lebih penting</th>
+				<th>kriteria 1</th>
 				<th>nilai perbandingan</th>
+				<th>kriteria 2</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -441,22 +442,13 @@ function showTabelPerbandingan($jenis,$kriteria) {
 			<tr>
 				<td>
 					<div class="field">
-						<div class="ui radio checkbox">
-							<input name="pilih<?php echo $urut?>" value="1" checked="" class="hidden" type="radio">
-							<label><?php echo $pilihan[$x]; ?></label>
-						</div>
+						<label><?php echo $pilihan[$x]; ?></label>
 					</div>
 				</td>
 				<td>
-					<div class="field">
-						<div class="ui radio checkbox">
-							<input name="pilih<?php echo $urut?>" value="2" class="hidden" type="radio">
-							<label><?php echo $pilihan[$y]; ?></label>
-						</div>
-					</div>
-				</td>
-				<td>
-					<div class="field">
+					<!--<div class="field">-->
+					<div id="button" class="btn-group btn-group-toggle" data-toggle="buttons">
+					
 
 	<?php
 	if ($kriteria == 'kriteria') {
@@ -465,11 +457,28 @@ function showTabelPerbandingan($jenis,$kriteria) {
 		$nilai = getNilaiPerbandinganAlternatif($x,$y,($jenis-1));
 	}
 
+			for($i=9;$i>0;$i--){
 	?>
-						<input type="number" min = "1" max="9" name="bobot<?php echo $urut?>" value="<?php echo $nilai?>" required>
+						<label class="btn btn-light" >
+						<input type="radio" name="bobot<?php echo $urut?>" id="bobot<?php echo $urut?>" value="1|<?php echo $i?>" autocomplete="off" > <?php echo $i?>
+						</label>
+						<?php }?>
+			<?php for($i=2;$i<=9;$i++){
+	?>
+						<label class="btn btn-light">
+						<input type="radio" name="bobot<?php echo $urut?>" id="bobot<?php echo $urut?>" value="2|<?php echo $i?>" autocomplete="off" > <?php echo $i?>
+						</label>
+						<?php }?>		
+						<!---<input type="number" min = "1" max="9" name="bobot<?php echo $urut?>" id="bobot<?php echo $urut?>" value="<?php echo $nilai?>" required> --->
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<label><?php echo $pilihan[$y]; ?></label>
 					</div>
 				</td>
 			</tr>
+			
 			<?php
 		}
 	}
@@ -480,10 +489,26 @@ function showTabelPerbandingan($jenis,$kriteria) {
 	<input type="text" name="jenis" value="<?php echo $jenis; ?>" hidden>
 	<br><br>
 	<input class="ui primary button" type="submit" name="submit" value="SUBMIT">
+	<input class="ui button" type="submit" name="submit" value="RESET" onClick="return onClickReset();">
 	</form>
-	<form method="post" action="bobot_kriteria.php">
-		<input class="ui button" type="submit" name="reset" value="RESET">
-	</form>
+	
+
+	<script>
+		function onClickReset(){
+			document.getElementById('bobot1').value=1;
+			document.getElementById('bobot2').value=1;
+			document.getElementById('bobot3').value=1;
+			document.getElementById('bobot4').value=1;
+			document.getElementById('bobot5').value=1;
+			document.getElementById('bobot6').value=1;
+			document.getElementById('bobot7').value=1;
+			document.getElementById('bobot8').value=1;
+			document.getElementById('bobot9').value=1;
+			document.getElementById('bobot10').value=1;
+
+			return false;
+		}
+	</script>
 	<?php
 }
 

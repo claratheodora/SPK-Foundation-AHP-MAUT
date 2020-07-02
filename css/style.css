@@ -70,7 +70,7 @@ header, nav, section, footer {
 	color: #fff;
 }
 header {
-	background: #303030;
+	background: #4590ff;
   text-align: center;
   padding: 30px;
 }
@@ -106,6 +106,6 @@ section {
   padding: 30px;
 }
 footer {
-	background: #303030;
+	background: #2576d3;
   text-align: center;
 }

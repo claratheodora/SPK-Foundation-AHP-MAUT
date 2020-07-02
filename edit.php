@@ -19,9 +19,15 @@
 	if (isset($_POST['update'])) {
 		$id 	= $_POST['id'];
 		$jenis	= $_POST['jenis'];
-		$nama 	= $_POST['nama'];
+		$ketahanan 	= $_POST['ketahanan'];
+		$pigmentasi = $_POST['pigmentasi'];
+		$vom 		= $_POST['vom'];
+		$kemasan 	= $_POST['kemasan'];
+		$tekstur 	= $_POST['tekstur'];
 
-		$query 	= "UPDATE $jenis SET nama='$nama' WHERE id=$id";
+
+		$query 	= "UPDATE $jenis SET `Ketahanan`='$ketahanan', `Pigmentasi`='$pigmentasi'
+		`Value of money`='$vom', `Kemasan`= '$kemasan', `Tekstur`='$tekstur' WHERE id=$id";
 		$result	= mysqli_query($koneksi, $query);
 
 		if (!$result) {
@@ -41,8 +47,28 @@
 
 	<form class="ui form" method="post" action="edit.php">
 		<div class="inline field">
-			<label>Nama <?php echo $jenis ?></label>
-			<input type="text" name="nama" value="<?php echo $nama?>">
+			<table>
+				<tr>
+					<th><label>Ketahanan </label></th>
+					<th><input type="number" step= 0.1 min = "0" max="5" name="ketahanan" placeholder="<?php echo $jenis?> baru"></th>
+				</tr>
+				<tr>
+					<th><label>Pigmentasi </label></th>
+					<th><input type="number" step= 0.1 min = "0" max="5" name="pigmentasi" placeholder="<?php echo $jenis?> baru"></th>
+				</tr>
+				<tr>
+					<th><label>Value of Money </label></th>
+					<th><input type="number" step= 0.1 min = "0" max="5" name="vom" placeholder="<?php echo $jenis?> baru"></th>
+				</tr>
+				<tr>
+					<th><label>Kemasan </label></th>
+					<th><input type="number" step= 0.1 min = "0" max="5" name="kemasan" placeholder="<?php echo $jenis?> baru"></th>
+				</tr>
+				<tr>
+					<th><label>Tekstur </label></th>
+					<th><input type="number" step= 0.1 min = "0" max="5" name="tekstur" placeholder="<?php echo $jenis?> baru"></th>
+				</tr>
+			</table>
 			<input type="hidden" name="id" value="<?php echo $id?>">
 			<input type="hidden" name="jenis" value="<?php echo $jenis?>">
 		</div>

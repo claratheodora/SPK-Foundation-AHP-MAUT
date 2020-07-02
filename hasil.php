@@ -43,7 +43,7 @@ include('header.php');
 
 <section class="content">
 	<h2 class="ui header">Hasil Perhitungan</h2>
-	<div style="width:1000px;height:430px;overflow-x:scroll;">
+	<div style="width:1050px;overflow-x:scroll;">
 	<table class="ui celled table">
 		<thead>
 		<tr>
@@ -87,48 +87,14 @@ include('header.php');
 
 	</table>
 	</div>
+	
+	<br>
+	<a href="<?php echo "hasil_akhir.php"?>">
+	<button class="ui right labeled icon button" style="float: right;">
+		<i class="right arrow icon"></i>
+		Lanjut
+	</button>
+	</a>
 
-	<h2 class="ui header">Perangkingan</h2>
-	<table class="ui celled collapsing table">
-		<thead>
-			<tr>
-				<th>Peringkat</th>
-				<th>Alternatif</th>
-				<th>Nilai</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-				$query  = "SELECT id,nama,id_alternatif,nilai FROM alternatif,ranking WHERE alternatif.id = ranking.id_alternatif ORDER BY nilai DESC";
-				$result = mysqli_query($koneksi, $query);
-
-				$i = 0;
-				while ($row = mysqli_fetch_array($result)) {
-					$i++;
-					if($i > 5){
-						break;
-					}
-				?>
-				<tr>
-					<?php if ($i == 1) {
-						echo "<td><div class=\"ui ribbon label\">Pertama</div></td>";
-					} else {
-						echo "<td>".$i."</td>";
-					}
-
-					?>
-
-					<td><?php echo $row['nama'] ?></td>
-					<td><?php echo $row['nilai'] ?></td>
-				</tr>
-
-				<?php	
-				}
-
-
-			?>
-		</tbody>
-	</table>
-</section>
-
-<?php include('footer.php'); ?>
+<?php 
+include('footer.php'); ?>

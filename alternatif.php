@@ -28,11 +28,11 @@
 				<th class="collapsing">No</th>
 				<th>Nama Alternatif</th>
 				<th>Gambar</th>
-				<th>k1</th>
-				<th>k2</th>
-				<th>k3</th>
-				<th>k4</th>
-				<th>k5</th>
+				<th>Kemasan</th>
+				<th>Pigmentasi</th>
+				<th>Value of Money</th>
+				<th>Ketahanan</th>
+				<th>Tekstur</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -62,7 +62,7 @@
 				$i++;
 		?>
 			<tr>
-				<td><?php echo $i ?></td>
+				<td><?php echo ($i+($pageno-1)*10) ?></td>
 				<td><?php echo $row['nama'] ?></td>
 				<td><img src="<?= $row['foto'] ?>" width="75" height="75"></td>
 				<td><?php echo $row['Ketahanan'] ?></td>
@@ -77,23 +77,8 @@
 					</form>
 				</td>
 			</tr>
-
 <?php } ?>
-	
-	</tbody>
-		<tfoot class="full-width">
-			<tr>
-				<th colspan="9">
-					<a href="tambah.php?jenis=alternatif">
-						<div class="ui right floated small primary labeled icon button">
-						<i class="plus icon"></i>Tambah
-						</div>
-					</a>
-				</th>
-			</tr>
-		</tfoot>
 	</table>
-
 	
 	<div class="ui pagination menu">
 		<a class="item" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>

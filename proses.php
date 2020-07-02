@@ -22,16 +22,23 @@ if (isset($_POST['submit'])) {
 	for ($x=0; $x <= ($n-2) ; $x++) {
 		for ($y=($x+1); $y <= ($n-1) ; $y++) {
 			$urut++;
-			$pilih	= "pilih".$urut;
+			//$pilih	= "pilih".$urut;
 			$bobot 	= "bobot".$urut;
-			if ($_POST[$pilih] == 1) {
+			list($value1,$value2) = explode('|', $_POST[$bobot]);
+			/*if ($_POST[$pilih] == 1) {
 				$matrik[$x][$y] = $_POST[$bobot];
 				$matrik[$y][$x] = 1 / $_POST[$bobot];
 			} else {
 				$matrik[$x][$y] = 1 / $_POST[$bobot];
 				$matrik[$y][$x] = $_POST[$bobot];
+			}*/
+			if ($value1 == 1) {
+				$matrik[$x][$y] = $value2;
+				$matrik[$y][$x] = 1 / $value2;
+			} else {
+				$matrik[$x][$y] = 1 / $value2;
+				$matrik[$y][$x] = $value2;
 			}
-
 
 			if ($jenis == 'kriteria') {
 				inputDataPerbandinganKriteria($x,$y,$matrik[$x][$y]);
