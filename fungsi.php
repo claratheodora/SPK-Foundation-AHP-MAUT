@@ -460,7 +460,7 @@ function showTabelPerbandingan($jenis,$kriteria) {
 			for($i=9;$i>0;$i--){
 	?>
 						<label class="btn btn-light" >
-						<input type="radio" name="bobot<?php echo $urut?>" id="bobot<?php echo $urut?>" value="1|<?php echo $i?>" autocomplete="off" > <?php echo $i?>
+						<input type="radio" name="bobot<?php echo $urut?>" id="bobot<?php echo $urut?>" value="1|<?php echo $i?>" autocomplete="off" required> <?php echo $i?>
 						</label>
 						<?php }?>
 			<?php for($i=2;$i<=9;$i++){
@@ -489,26 +489,8 @@ function showTabelPerbandingan($jenis,$kriteria) {
 	<input type="text" name="jenis" value="<?php echo $jenis; ?>" hidden>
 	<br><br>
 	<input class="ui primary button" type="submit" name="submit" value="SUBMIT">
-	<input class="ui button" type="submit" name="submit" value="RESET" onClick="return onClickReset();">
-	</form>
 	
-
-	<script>
-		function onClickReset(){
-			document.getElementById('bobot1').value=1;
-			document.getElementById('bobot2').value=1;
-			document.getElementById('bobot3').value=1;
-			document.getElementById('bobot4').value=1;
-			document.getElementById('bobot5').value=1;
-			document.getElementById('bobot6').value=1;
-			document.getElementById('bobot7').value=1;
-			document.getElementById('bobot8').value=1;
-			document.getElementById('bobot9').value=1;
-			document.getElementById('bobot10').value=1;
-
-			return false;
-		}
-	</script>
+	</form>
 	<?php
 }
 

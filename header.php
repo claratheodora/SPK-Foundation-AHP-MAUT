@@ -17,7 +17,7 @@
 
 <body>
 <header>
-	<h1>Sistem Pendukung Keputusan Foundation Metode dengan AHP MAUT</h1>
+	<h1>Sistem Pendukung Keputusan Foundation dengan Metode AHP MAUT</h1>
 </header>
 
 <div class="wrapper">

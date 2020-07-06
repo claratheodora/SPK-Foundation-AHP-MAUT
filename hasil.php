@@ -42,59 +42,52 @@ include('header.php');
 ?>
 
 <section class="content">
-	<h2 class="ui header">Hasil Perhitungan</h2>
-	<div style="width:1050px;overflow-x:scroll;">
-	<table class="ui celled table">
-		<thead>
-		<tr>
-			<th>Overall Composite Height</th>
-			<th>Priority Vector (rata-rata)</th>
-			<?php
-			for ($i=0; $i <= (getJumlahAlternatif()-1); $i++) { 
-				echo "<th>".getAlternatifNama($i)."</th>\n";
-			}
-			?>
-		</tr>
-		</thead>
-		<tbody>
-
-		<?php
-			for ($x=0; $x <= (getJumlahKriteria()-1) ; $x++) { 
-				echo "<tr>";
-				echo "<td>".getKriteriaNama($x)."</td>";
-				echo "<td>".round(getKriteriaPV(getKriteriaID($x)),5)."</td>";
-
-				for ($y=0; $y <= (getJumlahAlternatif()-1); $y++) { 
-					echo "<td>".round(getAlternatifPV(getAlternatifID($y),getKriteriaID($x)),5)."</td>";
-				}
-
-
-				echo "</tr>";
-			}
-		?>
-		</tbody>
-
-		<tfoot>
-		<tr>
-			<th colspan="2">Total</th>
-			<?php
-			for ($i=0; $i <= ($jmlAlternatif-1); $i++) { 
-				echo "<th>".round($nilai[$i],5)."</th>";
-			}
-			?>
-		</tr>
-		</tfoot>
-
-	</table>
+	<h2 class="ui header">Perangkingan</h2>
+		<div class="row mb-3">
+		<div class="col-sm-3">
+			<div class="form-group form-inline">
+				<label>Kemasan</label>
+				<select name="s_kemasan" id="s_kemasan" class="form-control">
+					<option value=""></option>
+					<option value="Pump">Pump</option>
+					<option value="Non pump">Non pump</option>
+					<option value="Compact">Compact</option>
+					<option value="Cushion">Cushion</option>
+					<option value="Jar">Jar</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group form-inline">
+				<label>Harga Maksimal</label>
+				<input type="number" name="s_hargamax" id="s_hargamax" class="form-control">
+				<label>Harga Minimum</label>
+				<input type="number" name="s_hargamin" id="s_hargamin" class="form-control">
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<button id="search" name="search" class="btn btn-warning"><i class="fa fa-search"></i> Cari</button>
+		</div>
 	</div>
-	
-	<br>
-	<a href="<?php echo "hasil_akhir.php"?>">
-	<button class="ui right labeled icon button" style="float: right;">
-		<i class="right arrow icon"></i>
-		Lanjut
-	</button>
-	</a>
+	<div class="data"></div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.data').load("filter.php");
+			$("#search").click(function(){
+				var kemasan = $("#s_kemasan").val();
+				var hargamin = $("#s_hargamin").val();
+				var hargamax = $("#s_hargamax").val();
+				$.ajax({
+					type: 'POST',
+					url: "filter.php",
+					data: {kemasan : kemasan, hargamax: hargamax, hargamin: hargamin},
+					success: function(hasil) {
+						$('.data').html(hasil);
+					}
+				});
+			});
+		});
+	</script>
 
 <?php 
 include('footer.php'); ?>
