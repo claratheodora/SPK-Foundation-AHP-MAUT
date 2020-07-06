@@ -57,16 +57,20 @@ include('header.php');
 				</select>
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 			<div class="form-group form-inline">
-				<label>Harga Maksimal</label>
-				<input type="number" name="s_hargamax" id="s_hargamax" class="form-control">
 				<label>Harga Minimum</label>
 				<input type="number" name="s_hargamin" id="s_hargamin" class="form-control">
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 			<button id="search" name="search" class="btn btn-warning"><i class="fa fa-search"></i> Cari</button>
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group form-inline">
+				<label>Harga Maksimal</label>
+				<input type="number" name="s_hargamax" id="s_hargamax" class="form-control">
+			</div>
 		</div>
 	</div>
 	<div class="data"></div>

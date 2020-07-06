@@ -41,12 +41,7 @@
                     while ($row = $res1->fetch_assoc()) {
             ?>
                 <tr>
-					<?php if ($no == 1) {
-						echo "<td><div class=\"ui ribbon label\">Pertama</div></td>";
-					} else {
-						echo "<td>".$no."</td>";
-					}
-					?>
+					<?php echo "<td>".$no."</td>";?>
                     <td><?php echo $row['nama'] ?></td>
                     <td><?php echo $row['harga'] ?></td>
                     <td><?php echo $row['bentuk'] ?></td>
