@@ -421,9 +421,9 @@ function showTabelPerbandingan($jenis,$kriteria) {
 	<table class="ui celled selectable collapsing table">
 		<thead>
 			<tr>
-				<th>kriteria 1</th>
-				<th>nilai perbandingan</th>
-				<th>kriteria 2</th>
+				<th>Kriteria 1</th>
+				<th>Nilai perbandingan</th>
+				<th>Kriteria 2</th>
 			</tr>
 		</thead>
 		<tbody>
