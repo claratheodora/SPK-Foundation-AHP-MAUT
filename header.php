@@ -35,5 +35,6 @@
 				</a>
 			</li>
 			<li><a class="item" href="bobot_kriteria.php">Perbandingan Kriteria</a></li>
+			<li><a class="item" href="panduan.php">Panduan</a></li>
 		</ul>
 	</nav>
