@@ -98,6 +98,13 @@ if (isset($_POST['submit'])) {
 	$consIndex   = getConsIndex($jmlmpb,$jmlmnk,$n);
 	$consRatio   = getConsRatio($jmlmpb,$jmlmnk,$n);
 
+	if($consRatio > 0.1){
+		header('Location: bobot_kriteria.php?msg=error');
+		exit();
+	} else{
+		header('Location: hasil.php');
+	}
+
 	if ($jenis == 'kriteria') {
 		include('output.php');
 	} else {

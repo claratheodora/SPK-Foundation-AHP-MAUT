@@ -47,7 +47,7 @@ include('header.php');
 		<div class="col-sm-3">
 			<div class="form-group form-inline">
 				<label>Kemasan</label>
-				<select name="s_kemasan" id="s_kemasan" class="form-control">
+				<select name="s_kemasan" id="s_kemasan" class="form-control" style="margin-left: 10px;">
 					<option value=""></option>
 					<option value="Pump">Pump</option>
 					<option value="Non pump">Non pump</option>
@@ -57,22 +57,28 @@ include('header.php');
 				</select>
 			</div>
 		</div>
-		<div class="col-sm-8">
+		<div class="col-sm-6">
 			<div class="form-group form-inline">
-				<label>Harga Minimum</label>
-				<input type="number" name="s_hargamin" id="s_hargamin" class="form-control">
+				<label>Harga </label>
+				<input type="number" name="s_hargamin" id="s_hargamin" class="form-control" placeholder="min" style="margin-left: 10px; margin-right: 10px;">
+				<p> - </p>
+				<input type="number" name="s_hargamax" id="s_hargamax" class="form-control" placeholder="max" style="margin-left: 10px;">
 			</div>
-		</div>
-		<div class="col-sm-3">
-			<button id="search" name="search" class="btn btn-warning"><i class="fa fa-search"></i> Cari</button>
 		</div>
 		<div class="col-sm-4">
 			<div class="form-group form-inline">
-				<label>Harga Maksimal</label>
-				<input type="number" name="s_hargamax" id="s_hargamax" class="form-control">
+				<label>Keyword</label>
+				<input type="text" name="s_keyword" id="s_keyword" class="form-control" style="margin-left: 10px;">
 			</div>
 		</div>
 	</div>
+	<div class="row mb-3">
+		<div class="col-sm-3">
+			<button id="search" name="search" class="btn btn-warning"><i class="fa fa-search"></i> Cari</button>
+		</div>
+		
+	</div>
+
 	<div class="data"></div>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -81,10 +87,11 @@ include('header.php');
 				var kemasan = $("#s_kemasan").val();
 				var hargamin = $("#s_hargamin").val();
 				var hargamax = $("#s_hargamax").val();
+				var keyword = $("#s_keyword").val();
 				$.ajax({
 					type: 'POST',
 					url: "filter.php",
-					data: {kemasan : kemasan, hargamax: hargamax, hargamin: hargamin},
+					data: {kemasan : kemasan, hargamax: hargamax, hargamin: hargamin, keyword: keyword},
 					success: function(hasil) {
 						$('.data').html(hasil);
 					}

@@ -29,6 +29,10 @@
 					$s_hargamin = $_POST['hargamin'];
 					$query .= " AND harga > $s_hargamin";
 				}
+				if (isset($_POST['keyword']) && ($_POST['keyword']!="")) {
+					$s_keyword = $_POST['keyword'];
+					$query .= " AND nama LIKE '%".$s_keyword."%'";
+				}
 				
 				$query .= " ORDER BY nilai DESC LIMIT 5";
 
